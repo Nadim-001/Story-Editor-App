@@ -3,17 +3,16 @@ import useOutsideClick from '../useOutsideClick';
 import projectData from '../../data';
 import { useParams } from 'react-router-dom';
 
-export default function ClickEditComponent({
+export default function ClickEditSelectComponent({
   originalInputValue,
-  inputType,
   majorField,
   minorField,
   index,
   placeholder = null,
+  choices,
 }) {
   //Major Field is projectData.MajorField. it could be characters, chapters or whatever.
   //Minor Field is projectData.[e.g. chapters].MinorField it could be chapter_name, text or whatever
-
   const ref = useRef();
 
   const { projectId } = useParams();
@@ -30,35 +29,27 @@ export default function ClickEditComponent({
 
   function handleOnChange(e) {
     setNewState(e.target.value);
-    console.log(e.target.value, typeof e.target.value);
   }
 
   function saveData() {
     for (let index = 0; index < projectData.chapters.length; index++) {
-      // console.log(projectData[`${majorField}`][index][`${minorField}`]);
+      // console.log(newState != originalInputValue);
+      // console.log('newState is ', newState);
+      // console.log('original is ', originalInputValue);
       if (
         projectData[`${majorField}`][index][`${minorField}`] ==
           originalInputValue &&
         projectData[`${majorField}`][index].Project_ID == projectId
       ) {
-        console.log('reached if 1');
+        console.log('reached here');
         if (
           newState !== '' &&
           newState != originalInputValue &&
           newState !== undefined
         ) {
-          console.log('reached if 2');
-          if (inputType == 'number') {
-            projectData[`${majorField}`][index][`${minorField}`] ==
-              Number(newState);
-            setChanged(true);
-          } else {
-            //else it is a string. date is saved is given in string from input
-            projectData[`${majorField}`][index][`${minorField}`] == newState;
-            setChanged(true);
-          }
+          projectData[`${majorField}`][index][`${minorField}`] == newState;
+          setChanged(true);
         } else {
-          console.log('reached else');
           setNewState(originalInputValue);
           setChanged(false);
         }
@@ -66,19 +57,10 @@ export default function ClickEditComponent({
     }
   }
 
-  function handleKeyPress(e) {
-    if (e.code == 'Enter') {
-      setEditing(false);
-      saveData();
-    }
-  }
-
   useEffect(() => {
     if (editing == false && originalInputValue !== newState) {
       saveData();
-      // console.log(projectData);
-    }
-    if (originalInputValue == newState) {
+    } else {
       setNewState(originalInputValue);
       setChanged(false);
     }
@@ -89,17 +71,6 @@ export default function ClickEditComponent({
 
   return (
     <>
-      {minorField == 'Date_of_Death' &&
-      (newState == '' || newState == undefined) &&
-      !editing ? (
-        <div>
-          <input
-            type={inputType}
-            onChange={(e) => handleOnChange(e)}
-            onKeyUp={(e) => handleKeyPress(e)}
-          />
-        </div>
-      ) : null}
       {!editing ? (
         <div
           onDoubleClick={handleOnDoubleClick}
@@ -110,13 +81,12 @@ export default function ClickEditComponent({
         </div>
       ) : (
         <div ref={ref}>
-          <input
-            type={inputType}
-            value={newState}
-            placeholder={placeholder}
-            onChange={(e) => handleOnChange(e)}
-            onKeyUp={(e) => handleKeyPress(e)}
-          />
+          <select onChange={(e) => handleOnChange(e)}>
+            <option value="">{placeholder}</option>
+            {choices.map((choice) => (
+              <option value={choice.value}>{choice.value}</option>
+            ))}
+          </select>
         </div>
       )}
     </>

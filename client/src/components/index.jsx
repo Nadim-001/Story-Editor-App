@@ -7,3 +7,4 @@ export { default as ProjectCard } from './ProjectCard';
 export { default as ChapterCard } from './ChapterCard';
 export { default as CharacterCard } from './CharacterCard';
 export { default as ClickEditComponent } from './ClickEditComponent';
+export { default as ClickEditSelectComponent } from './ClickEditSelectComponent';

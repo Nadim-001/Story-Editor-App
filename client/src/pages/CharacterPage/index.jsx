@@ -14,7 +14,7 @@ export default function CharacterIndexPage() {
   const [hasCharacters, setHasCharacters] = useState(true);
 
   const { projectId } = useParams();
-  console.log(projectData);
+  // console.log(projectData);
 
   function handleBackBtn() {
     navigate(`../${projectId}`);

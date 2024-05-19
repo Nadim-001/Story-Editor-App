@@ -9,7 +9,6 @@ import ClickEditComponent from '../ClickEditComponent';
 export default function ChapterCard({ chapterID, chapterName, index }) {
   const { currentChapter, setCurrentChapter } = useScript();
 
-  const [newChapterName, setNewChapterName] = useState(chapterName);
   const [isChanged, setIsChanged] = useState(true);
 
   function handleOnClick() {
@@ -28,8 +27,7 @@ export default function ChapterCard({ chapterID, chapterName, index }) {
     >
       <ClickEditComponent
         originalInputValue={chapterName}
-        newState={newChapterName}
-        setNewState={setNewChapterName}
+        inputType={'text'}
         majorField={'chapters'}
         minorField={'Chapter_Name'}
         index={index}
