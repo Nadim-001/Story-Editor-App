@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 
 import { useNavigate, Link } from 'react-router-dom';
 //NEED TO IMPORT FROM NEW CONTEXT
-import { useExample } from '../../contexts';
+import { useScript } from '../../contexts';
 //import { Footer } from '../../components';
 
 export default function LoginPage() {
   //NEED TO IMPORT FROM NEW CONTEXT
   const { isLoggedIn, setIsLoggedIn, userID, setUserID, setUsername } =
-    useExample();
+    useScript();
   const [formUsername, setFormUsername] = useState('');
   const [formPassword, setFormPassword] = useState('');
   const [incorrectCredentials, setIncorrectCredentials] = useState(false);

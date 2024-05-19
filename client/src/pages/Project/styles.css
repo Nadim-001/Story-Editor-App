@@ -1,0 +1,84 @@
+.project-container {
+  border: 5px solid black;
+  border-radius: 15px;
+  height: 80vh;
+  width: 90vw;
+  margin: 0px auto;
+  display: flex;
+}
+
+.left-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 2vh 0 2vh 1vw;
+}
+
+.project-title {
+  border: 5px solid blue;
+  height: 5vh;
+  width: 20vw;
+
+  /* margin-left: 1vw; */
+  /* margin-top: 2vh; */
+  border-radius: 15px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-container {
+  border: 5px solid blue;
+  height: 25vh;
+  width: 20vw;
+  /* margin-left: 1vw; */
+  /* margin-top: 2vh; */
+  border-radius: 15px;
+  flex: 5;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.nav-container button {
+  font-size: 20px;
+  background-color: #fffdf8;
+  padding: 15px;
+  border-radius: 8px;
+  flex-grow: 1;
+  text-align: center;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.chapters-container {
+  border: 5px solid red;
+  height: 47vh;
+  width: 20vw;
+  /* margin-left: 1vw; */
+  /* margin-top: 2vh; */
+  border-radius: 15px;
+  flex: 15;
+}
+
+.script-container {
+  border: 5px solid green;
+  height: 75vh;
+  width: 66vw;
+  margin-top: 2vh;
+  margin-left: 1vw;
+  border-radius: 15px;
+}
+
+.style-bar {
+  border: 5px solid yellow;
+  height: 5vh;
+  width: 66vw;
+}
+
+.page {
+  border: 5px solid pink;
+  height: 66vh;
+  width: 40vw;
+  margin: 1vh auto 0 auto;
+}

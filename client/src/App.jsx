@@ -13,7 +13,7 @@ import {
   ProjectIndexPage,
   ProjectShowPage,
 } from './pages';
-import { ExampleProvider } from './contexts';
+import { ScriptProvider } from './contexts';
 
 //Don't forget to change name of Provider
 
@@ -21,7 +21,7 @@ import { ExampleProvider } from './contexts';
 
 function App() {
   return (
-    <ExampleProvider>
+    <ScriptProvider>
       <Routes>
         <Route path="/" element={<Header />}>
           <Route index element={<HomePage />} />
@@ -39,15 +39,15 @@ function App() {
 
           <Route path="/projects">
             <Route index element={<ProjectIndexPage />} />
-            <Route path=":id" element={<ProjectShowPage />} />
-            <Route path=":id/characters">
+            <Route path=":projectId" element={<ProjectShowPage />} />
+            <Route path=":projectId/characters">
               <Route index element={<CharacterIndexPage />} />
-              <Route path=":id" element={<CharacterShowPage />} />
+              <Route path=":characterId" element={<CharacterShowPage />} />
             </Route>
           </Route>
         </Route>
       </Routes>
-    </ExampleProvider>
+    </ScriptProvider>
   );
 }
 

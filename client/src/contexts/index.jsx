@@ -1,32 +1,40 @@
 import React, { useState, useContext, createContext } from 'react';
 
 //step 1: creating  a context which allows us to share info between components
-const ExampleContext = createContext();
+const ScriptContext = createContext();
 
 //step 2: cerate the provider in order to provide the context to the child components
-export const ExampleProvider = ({ children }) => {
+export const ScriptProvider = ({ children }) => {
   //const [user, setUser] = useState();
-  const [exampleState, setExampleState] = useState();
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userID, setUserID] = useState(0);
   const [username, setUsername] = useState('');
 
+  const [currentProject, setCurrentProject] = useState();
+  const [currentChapter, setCurrentChapter] = useState();
+  const [currentCharacter, setCurrentCharacter] = useState();
+
   return (
-    <ExampleContext.Provider
+    <ScriptContext.Provider
       value={{
-        exampleState,
-        setExampleState,
         isLoggedIn,
         setIsLoggedIn,
         userID,
         setUserID,
         username,
         setUsername,
+        currentChapter,
+        setCurrentChapter,
+        currentProject,
+        setCurrentProject,
+        currentCharacter,
+        setCurrentCharacter,
       }}
     >
       {children}
-    </ExampleContext.Provider>
+    </ScriptContext.Provider>
   );
 };
 //step 3: we have to create a way for components to consume the shared data
-export const useExample = () => useContext(ExampleContext);
+export const useScript = () => useContext(ScriptContext);

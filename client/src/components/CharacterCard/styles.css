@@ -1,0 +1,7 @@
+.character-card-container {
+  border: 5px solid black;
+}
+
+.current-character {
+  background-color: yellow;
+}

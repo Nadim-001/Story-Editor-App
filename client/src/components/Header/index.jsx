@@ -1,16 +1,17 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import { useExample } from '../../contexts';
+import { useScript } from '../../contexts';
+import { HiOutlineBookOpen, HiArrowLeftCircle } from 'react-icons/hi2';
 import './styles.css';
 const styles = ({ isActive }) => ({ color: isActive ? '#2B061E' : '#875053' });
 
 export default function Header() {
-  const { isLoggedIn } = useExample();
+  const { isLoggedIn } = useScript();
 
   return (
-    <main>
+    <>
       <header>
-        <h1>NAVIGATION</h1>
+        <HiOutlineBookOpen className="Logo" />
         <nav>
           <NavLink to="/" style={styles}>
             Home
@@ -30,6 +31,6 @@ export default function Header() {
         </nav>
       </header>
       <Outlet />
-    </main>
+    </>
   );
 }

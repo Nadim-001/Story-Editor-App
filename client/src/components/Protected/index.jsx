@@ -1,8 +1,8 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import { useExample } from '../../contexts';
+import { useScript } from '../../contexts';
 
 const Protected = ({ children }) => {
-  const { isLoggedIn } = useExample();
+  const { isLoggedIn } = useScript();
   if (!isLoggedIn) {
     return (
       <>

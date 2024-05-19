@@ -1,0 +1,12 @@
+.individual-chapters-container {
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 1vh 2vw;
+}
+
+.current-chapter {
+  background-color: yellow;
+}

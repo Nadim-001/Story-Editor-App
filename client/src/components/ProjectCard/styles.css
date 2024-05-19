@@ -1,0 +1,7 @@
+.project-card-container {
+  border: 5px solid black;
+}
+
+.current-project {
+  background-color: yellow;
+}
