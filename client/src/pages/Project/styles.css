@@ -1,3 +1,7 @@
+* {
+  font-family: 'Courier Prime', monospace;
+}
+
 .project-container {
   border: 5px solid black;
   border-radius: 15px;
@@ -68,17 +72,51 @@
   margin-top: 2vh;
   margin-left: 1vw;
   border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
 }
-
-.style-bar {
-  border: 5px solid yellow;
-  height: 5vh;
-  width: 66vw;
+.script-container::-webkit-scrollbar {
+  display: none;
 }
-
 .page {
-  border: 5px solid pink;
-  height: 66vh;
-  width: 40vw;
-  margin: 1vh auto 0 auto;
+  box-sizing: border-box;
+  width: 8.5in;
+  min-height: 11in;
+  padding: 1in;
+  margin: 1rem;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+  /* border: 5px solid yellow; */
 }
+
+.page-area {
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+}
+
+/* 
+.editor .ql-editor {
+  width: 8.5in;
+  min-height: 11in;
+  padding: 1in;
+  margin: 1rem;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+  background-color: #f3f3f3;
+}
+
+.editor .ql-container.ql-snow {
+  border: none;
+  display: flex;
+  justify-content: center;
+}
+
+.editor .ql-toolbar.ql-snow {
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+} */

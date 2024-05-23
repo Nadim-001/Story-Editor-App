@@ -1,0 +1,26 @@
+.add-script-container {
+  display: flex;
+}
+
+.add-script-btn {
+  border: none;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  margin: 0 auto;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.modal-body {
+  border: 1px solid blue;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 10vw;
+  gap: 3px;
+}
+
+.modal-body button {
+  text-align: left;
+}

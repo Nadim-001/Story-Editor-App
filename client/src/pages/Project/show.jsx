@@ -1,16 +1,51 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './styles.css';
-import { ChapterCard } from '../../components';
+import {
+  ChapterCard,
+  AddScriptComponent,
+  SceneDialogue,
+  SceneAction,
+  SceneHeading,
+  SceneTransition,
+} from '../../components';
 import projectData from '../../data';
 import { useScript } from '../../contexts';
+import ReactQuill, { Quill } from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 export default function show() {
   const { projectId } = useParams();
   const navigate = useNavigate();
   //TODO: use currentProject to fetch the Chapters
-  const { currentProject } = useScript();
-  console.log(projectData);
+  const { currentProject, currentChapter } = useScript();
+
+  const [scriptValue, setScriptValue] = useState('');
+  const [chapterContent, setChapterContent] = useState([]);
+
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      [{ font: [] }],
+      [{ size: [] }],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      ['link', 'formula'],
+      [{ script: 'sub' }, { script: 'super' }],
+      [
+        { list: 'ordered' },
+        { list: 'bullet' },
+        { indent: '-1' },
+        { indent: '+1' },
+      ],
+      [{ color: [] }, { background: [] }],
+      [{ align: '' }],
+      [{ align: 'center' }],
+      [{ align: 'right' }],
+      [{ align: 'justify' }],
+    ],
+  };
+
+  const chapter_content = [{ type: 'scene-heading' }];
 
   function handleCharacters() {
     navigate('./characters');
@@ -18,6 +53,16 @@ export default function show() {
 
   function handleMaps() {}
   function handleIdeas() {}
+
+  useEffect(() => {
+    if (currentChapter) {
+      const newContent = projectData.chapters.filter(
+        (chapter) => chapter.Chapter_ID == currentChapter
+      );
+      setChapterContent(newContent[0].Chapter_Content);
+      // console.log(newContent[0].Chapter_Content);
+    }
+  }, [currentChapter]);
 
   return (
     <div className="project-container">
@@ -52,8 +97,27 @@ export default function show() {
         </div>
       </div>
       <div className="script-container">
-        <div className="style-bar"></div>
-        <div className="page"></div>
+        <div className="page">
+          <div className="page-area">
+            {chapterContent
+              ? chapterContent.map((chapter) => {
+                  console.log(chapter);
+                  if (chapter.type == 'dialogue') {
+                    return <SceneDialogue scene={chapter} />;
+                  }
+                  if (chapter.type == 'action') {
+                    return <SceneAction scene={chapter} />;
+                  }
+                  if (chapter.type == 'scene-headings') {
+                    return <SceneHeading scene={chapter} />;
+                  }
+                  if (chapter.type == 'transition') {
+                    return <SceneTransition scene={chapter} />;
+                  }
+                })
+              : null}
+          </div>
+        </div>
       </div>
     </div>
   );

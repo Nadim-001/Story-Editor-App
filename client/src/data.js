@@ -37,14 +37,228 @@ export const projectData = {
       Project_ID: 1,
       Chapter_Number: 1,
       Chapter_Name: 'The Beginning',
-      Chapter_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      Chapter_Content: [
+        {
+          type: 'scene-headings',
+          is_subheading: false,
+          interior: 'INT.',
+          location: 'CENTRAL PARK - BENCH',
+          time: 'DAY',
+        },
+        {
+          type: 'action',
+          content: 'John runs across the park, dodging people as he goes.',
+        },
+        {
+          type: 'dialogue',
+          character: 'JOHN',
+          extension: 'V.O.',
+          parenthetical: '(whispering)',
+          dialogue: "I must find the package before it's too late.",
+        },
+        {
+          type: 'transition',
+          transition: 'CUT TO:',
+        },
+        {
+          type: 'scene-headings',
+          is_subheading: false,
+          interior: 'EXT.',
+          location: 'CITY STREET - NIGHT',
+          time: 'NIGHT',
+        },
+        {
+          type: 'action',
+          content:
+            'A car screeches to a halt in front of the building. The driver leans out, scanning the street.',
+        },
+        {
+          type: 'dialogue',
+          character: 'SARA',
+          extension: 'O.S.',
+          parenthetical: '(shouting)',
+          dialogue: 'Get in, now!',
+        },
+        {
+          type: 'transition',
+          transition: 'FADE OUT:',
+        },
+        {
+          type: 'scene-headings',
+          is_subheading: false,
+          interior: 'INT.',
+          location: 'ABANDONED WAREHOUSE',
+          time: 'NIGHT',
+        },
+        {
+          type: 'action',
+          content:
+            'The dimly lit warehouse is filled with old, rusted machinery. A single light bulb swings from the ceiling, casting eerie shadows.',
+        },
+        {
+          type: 'dialogue',
+          character: 'JOHN',
+          extension: '',
+          parenthetical: '(determined)',
+          dialogue: 'We have to be quiet. They could be anywhere.',
+        },
+        {
+          type: 'dialogue',
+          character: 'SARA',
+          extension: '',
+          parenthetical: '(nervous)',
+          dialogue: "I don't like this, John. We should have brought backup.",
+        },
+        {
+          type: 'action',
+          content:
+            'Suddenly, a loud crash echoes through the building. John and Sara freeze.',
+        },
+        {
+          type: 'dialogue',
+          character: 'JOHN',
+          extension: '',
+          parenthetical: '(whispering)',
+          dialogue: 'Stay close to me.',
+        },
+        {
+          type: 'transition',
+          transition: 'SMASH CUT TO:',
+        },
+        {
+          type: 'scene-headings',
+          is_subheading: false,
+          interior: 'EXT.',
+          location: 'ROOFTOP - NIGHT',
+          time: 'NIGHT',
+        },
+        {
+          type: 'action',
+          content:
+            'The city skyline glows in the distance. John and Sara emerge from a stairwell, breathless.',
+        },
+        {
+          type: 'dialogue',
+          character: 'SARA',
+          extension: '',
+          parenthetical: '(relieved)',
+          dialogue: 'We made it. What now?',
+        },
+        {
+          type: 'dialogue',
+          character: 'JOHN',
+          extension: '',
+          parenthetical: '(resolute)',
+          dialogue: 'Now we wait for the signal.',
+        },
+        {
+          type: 'action',
+          content:
+            'In the distance, a red flare shoots up into the sky. John nods.',
+        },
+        {
+          type: 'dialogue',
+          character: 'JOHN',
+          extension: '',
+          parenthetical: '(focused)',
+          dialogue: "There it is. Let's move.",
+        },
+        {
+          type: 'transition',
+          transition: 'DISSOLVE TO:',
+        },
+        {
+          type: 'scene-headings',
+          is_subheading: false,
+          interior: 'INT.',
+          location: 'SECRET LAB - NIGHT',
+          time: 'NIGHT',
+        },
+        {
+          type: 'action',
+          content:
+            'The lab is filled with high-tech equipment. John and Sara move stealthily, avoiding the security cameras.',
+        },
+        {
+          type: 'dialogue',
+          character: 'SARA',
+          extension: '',
+          parenthetical: '(whispering)',
+          dialogue: 'This place gives me the creeps.',
+        },
+        {
+          type: 'dialogue',
+          character: 'JOHN',
+          extension: '',
+          parenthetical: '(serious)',
+          dialogue: "Stay focused. We're almost there.",
+        },
+        {
+          type: 'action',
+          content:
+            'They reach a door marked "AUTHORIZED PERSONNEL ONLY." John pulls out a device and starts hacking the lock.',
+        },
+        {
+          type: 'dialogue',
+          character: 'SARA',
+          extension: '',
+          parenthetical: '(anxious)',
+          dialogue: "Hurry up, John. We don't have much time.",
+        },
+        {
+          type: 'transition',
+          transition: 'CUT TO:',
+        },
+        {
+          type: 'scene-headings',
+          is_subheading: false,
+          interior: 'INT.',
+          location: 'CONTROL ROOM - NIGHT',
+          time: 'NIGHT',
+        },
+        {
+          type: 'action',
+          content:
+            'The control room is filled with monitors showing various parts of the facility. John and Sara enter and quickly start downloading data from a terminal.',
+        },
+        {
+          type: 'dialogue',
+          character: 'JOHN',
+          extension: '',
+          parenthetical: '(focused)',
+          dialogue: "Keep an eye on the door. I'm almost done here.",
+        },
+        {
+          type: 'dialogue',
+          character: 'SARA',
+          extension: '',
+          parenthetical: '(tense)',
+          dialogue: "I don't like this. We need to get out of here.",
+        },
+        {
+          type: 'action',
+          content:
+            'A loud alarm suddenly blares. Red lights flash as the room goes into lockdown.',
+        },
+        {
+          type: 'dialogue',
+          character: 'JOHN',
+          extension: '',
+          parenthetical: '(urgent)',
+          dialogue: "Got it! Let's go!",
+        },
+        {
+          type: 'transition',
+          transition: 'FADE OUT:',
+        },
+      ],
     },
     {
       Chapter_ID: 2,
       Project_ID: 1,
       Chapter_Number: 2,
       Chapter_Name: 'A New Challenge',
-      Chapter_text:
+      Chapter_Content:
         'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     },
     {
@@ -52,7 +266,7 @@ export const projectData = {
       Project_ID: 1,
       Chapter_Number: 3,
       Chapter_Name: 'Secrets Unveiled',
-      Chapter_text:
+      Chapter_Content:
         'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     },
     {
@@ -60,7 +274,7 @@ export const projectData = {
       Project_ID: 1,
       Chapter_Number: 4,
       Chapter_Name: 'The Journey Begins',
-      Chapter_text:
+      Chapter_Content:
         'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
     },
     {
@@ -68,7 +282,7 @@ export const projectData = {
       Project_ID: 2,
       Chapter_Number: 1,
       Chapter_Name: 'Crossroads',
-      Chapter_text:
+      Chapter_Content:
         'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     },
     {
@@ -76,7 +290,7 @@ export const projectData = {
       Project_ID: 2,
       Chapter_Number: 2,
       Chapter_Name: 'Hidden Truths',
-      Chapter_text:
+      Chapter_Content:
         'Curabitur pretium tincidunt lacus. Nulla gravida orci a odio.',
     },
     {
@@ -84,7 +298,7 @@ export const projectData = {
       Project_ID: 2,
       Chapter_Number: 3,
       Chapter_Name: 'Rising Tensions',
-      Chapter_text:
+      Chapter_Content:
         'Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris.',
     },
     {
@@ -92,21 +306,21 @@ export const projectData = {
       Project_ID: 2,
       Chapter_Number: 4,
       Chapter_Name: 'A Twist of Fate',
-      Chapter_text: 'Integer in mauris eu nibh euismod gravida.',
+      Chapter_Content: 'Integer in mauris eu nibh euismod gravida.',
     },
     {
       Chapter_ID: 9,
       Project_ID: 5,
       Chapter_Number: 1,
       Chapter_Name: 'Battle Lines',
-      Chapter_text: 'Vivamus commodo. Nulla sed leo.',
+      Chapter_Content: 'Vivamus commodo. Nulla sed leo.',
     },
     {
       Chapter_ID: 10,
       Project_ID: 5,
       Chapter_Number: 2,
       Chapter_Name: 'Unexpected Allies',
-      Chapter_text:
+      Chapter_Content:
         'Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.',
     },
     {
@@ -114,21 +328,21 @@ export const projectData = {
       Project_ID: 5,
       Chapter_Number: 3,
       Chapter_Name: 'The Darkest Hour',
-      Chapter_text: 'Maecenas fermentum consequat mi.',
+      Chapter_Content: 'Maecenas fermentum consequat mi.',
     },
     {
       Chapter_ID: 12,
       Project_ID: 5,
       Chapter_Number: 4,
       Chapter_Name: 'Revelation',
-      Chapter_text: 'Donec fermentum. Pellentesque malesuada nulla a mi.',
+      Chapter_Content: 'Donec fermentum. Pellentesque malesuada nulla a mi.',
     },
     {
       Chapter_ID: 13,
       Project_ID: 6,
       Chapter_Number: 1,
       Chapter_Name: 'The Turning Point',
-      Chapter_text:
+      Chapter_Content:
         'Suspendisse eu ligula. Donec bibendum. Pellentesque posuere.',
     },
     {
@@ -136,14 +350,14 @@ export const projectData = {
       Project_ID: 6,
       Chapter_Number: 2,
       Chapter_Name: 'Shadows of the Past',
-      Chapter_text: 'Quisque ullamcorper placerat ipsum. Cras nibh.',
+      Chapter_Content: 'Quisque ullamcorper placerat ipsum. Cras nibh.',
     },
     {
       Chapter_ID: 15,
       Project_ID: 6,
       Chapter_Number: 3,
       Chapter_Name: 'The Great Escape',
-      Chapter_text:
+      Chapter_Content:
         'Morbi vel justo vitae lacus tincidunt ultrices. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
     },
     {
@@ -151,14 +365,14 @@ export const projectData = {
       Project_ID: 6,
       Chapter_Number: 4,
       Chapter_Name: 'Unlikely Heroes',
-      Chapter_text: 'Vestibulum sed ante. Donec sagittis euismod purus.',
+      Chapter_Content: 'Vestibulum sed ante. Donec sagittis euismod purus.',
     },
     {
       Chapter_ID: 17,
       Project_ID: 899,
       Chapter_Number: 1,
       Chapter_Name: 'Conspiracy Uncovered',
-      Chapter_text:
+      Chapter_Content:
         'Curabitur pretium tincidunt lacus. Nulla gravida orci a odio.',
     },
     {
@@ -166,7 +380,7 @@ export const projectData = {
       Project_ID: 899,
       Chapter_Number: 2,
       Chapter_Name: 'The Final Countdown',
-      Chapter_text:
+      Chapter_Content:
         'Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris.',
     },
     {
@@ -174,14 +388,14 @@ export const projectData = {
       Project_ID: 899,
       Chapter_Number: 3,
       Chapter_Name: 'A Glimmer of Hope',
-      Chapter_text: 'Vivamus commodo. Nulla sed leo.',
+      Chapter_Content: 'Vivamus commodo. Nulla sed leo.',
     },
     {
       Chapter_ID: 20,
       Project_ID: 899,
       Chapter_Number: 4,
       Chapter_Name: 'The Ultimate Sacrifice',
-      Chapter_text:
+      Chapter_Content:
         'Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.',
     },
     {
@@ -189,7 +403,7 @@ export const projectData = {
       Project_ID: 901,
       Chapter_Number: 1,
       Chapter_Name: 'Redemption',
-      Chapter_text:
+      Chapter_Content:
         'Curabitur pretium tincidunt lacus. Nulla gravida orci a odio.',
     },
     {
@@ -197,7 +411,7 @@ export const projectData = {
       Project_ID: 901,
       Chapter_Number: 2,
       Chapter_Name: 'The Last Stand',
-      Chapter_text:
+      Chapter_Content:
         'Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris.',
     },
     {
@@ -205,14 +419,14 @@ export const projectData = {
       Project_ID: 901,
       Chapter_Number: 3,
       Chapter_Name: 'Aftermath',
-      Chapter_text: 'Vivamus commodo. Nulla sed leo.',
+      Chapter_Content: 'Vivamus commodo. Nulla sed leo.',
     },
     {
       Chapter_ID: 24,
       Project_ID: 901,
       Chapter_Number: 4,
       Chapter_Name: 'New Beginnings',
-      Chapter_text:
+      Chapter_Content:
         'Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.',
     },
   ],
