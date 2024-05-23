@@ -9,6 +9,7 @@ export default function SceneClickEditComponent({
   index,
   field,
   placeholder = null,
+  upperCase = false,
 }) {
   //Major Field is projectData.MajorField. it could be characters, chapters or whatever.
   //Minor Field is projectData.[e.g. chapters].MinorField it could be chapter_name, text or whatever
@@ -27,10 +28,16 @@ export default function SceneClickEditComponent({
   }
 
   function handleOnChange(e) {
-    setNewState(e.target.value);
+    if (upperCase) {
+      setNewState(e.target.value.toUpperCase());
+    } else {
+      setNewState(e.target.value);
+    }
   }
 
-  function saveData() {}
+  function saveData() {
+    //TODO: Save
+  }
 
   function handleKeyPress(e) {
     if (e.code == 'Enter') {
@@ -46,7 +53,6 @@ export default function SceneClickEditComponent({
     }
     if (originalInputValue == newState) {
       setNewState(originalInputValue);
-      setChanged(false);
     }
     if (newState == undefined) {
       setNewState(originalInputValue);
@@ -58,7 +64,6 @@ export default function SceneClickEditComponent({
       {!editing ? (
         <div onDoubleClick={handleOnDoubleClick}>
           {newState ? newState : originalInputValue}
-          <span className="chapter-index"> {index + 1}</span>
         </div>
       ) : (
         <div ref={ref}>

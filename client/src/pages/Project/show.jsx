@@ -100,19 +100,19 @@ export default function show() {
         <div className="page">
           <div className="page-area">
             {chapterContent
-              ? chapterContent.map((chapter) => {
+              ? chapterContent.map((chapter, index) => {
                   console.log(chapter);
                   if (chapter.type == 'dialogue') {
-                    return <SceneDialogue scene={chapter} />;
+                    return <SceneDialogue scene={chapter} index={index} />;
                   }
                   if (chapter.type == 'action') {
-                    return <SceneAction scene={chapter} />;
+                    return <SceneAction scene={chapter} index={index} />;
                   }
                   if (chapter.type == 'scene-headings') {
-                    return <SceneHeading scene={chapter} />;
+                    return <SceneHeading scene={chapter} index={index} />;
                   }
                   if (chapter.type == 'transition') {
-                    return <SceneTransition scene={chapter} />;
+                    return <SceneTransition scene={chapter} index={index} />;
                   }
                 })
               : null}
