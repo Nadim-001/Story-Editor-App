@@ -3,7 +3,12 @@ import { HiOutlinePlusCircle } from 'react-icons/hi2';
 import './styles.css';
 import AddScriptModal from '../AddScriptModal';
 
-export default function AddScriptComponent() {
+export default function AddScriptComponent({
+  index,
+  positioning,
+  setChanged,
+  changed,
+}) {
   const [showModal, setShowModal] = useState(false);
   const [modalPosition, setModalPosition] = useState({ left: 0, top: 0 });
 
@@ -23,12 +28,12 @@ export default function AddScriptComponent() {
       const buttonRect = buttonRef.current.getBoundingClientRect();
       const modalHeight = modalRef.current.offsetHeight;
       const buttonHeight = buttonRef.current.offsetHeight;
-      console.log(buttonRect);
+      // console.log(buttonRect);
       const newPosition = {
         left: buttonRect.right + 10,
         top: buttonRect.top + buttonHeight / 2 - modalHeight / 2,
       };
-      console.log(newPosition);
+      //console.log(newPosition);
       setModalPosition(newPosition);
     }
   }, [showModal]);
@@ -49,6 +54,10 @@ export default function AddScriptComponent() {
           modalRef={modalRef}
           modalPosition={modalPosition}
           setShowModal={setShowModal}
+          index={index}
+          positioning={positioning}
+          setChanged={setChanged}
+          changed={changed}
         />
       ) : null}
     </div>

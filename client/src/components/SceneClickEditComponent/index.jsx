@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import useOutsideClick from '../useOutsideClick';
 import projectData from '../../data';
 import { useParams } from 'react-router-dom';
+import { useScript } from '../../contexts';
 
 export default function SceneClickEditComponent({
   originalInputValue,
@@ -17,9 +18,12 @@ export default function SceneClickEditComponent({
   const ref = useRef();
 
   const { projectId } = useParams();
+  const { currentProjectData, setCurrentProjectData, currentChapter } =
+    useScript();
 
   const [editing, setEditing] = useState(false);
   const [newState, setNewState] = useState(originalInputValue);
+  const [lastValue, setLastValue] = useState(originalInputValue);
 
   useOutsideClick(ref, () => setEditing(false));
 
@@ -37,18 +41,26 @@ export default function SceneClickEditComponent({
 
   function saveData() {
     //TODO: Save
+    let projectData = currentProjectData;
+    for (let i = 0; i < projectData.chapters.length; i++) {
+      if (projectData.chapters[i].Chapter_ID == currentChapter) {
+        projectData.chapters[i].Chapter_Content[index][`${field}`] = newState;
+        //setCurrentProjectData(projectData);
+        console.log(projectData.chapters[i].Chapter_Content[index][`${field}`]);
+      }
+    }
   }
 
   function handleKeyPress(e) {
     if (e.code == 'Enter') {
       setEditing(false);
-      saveData();
     }
   }
 
   useEffect(() => {
-    if (editing == false && originalInputValue !== newState) {
+    if (editing == false && lastValue !== newState) {
       saveData();
+      setLastValue(newState);
       // console.log(projectData);
     }
     if (originalInputValue == newState) {

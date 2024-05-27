@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NewProjectButton, ProjectCard } from '../../components';
 import projectData from '../../data';
+import { useScript } from '../../contexts';
 
 export default function ProjectPage() {
   //FIXME: For now i have set project to ___ but later should fetch from backend to see if user has projects
   const [hasProjects, setHasProjects] = useState(true);
+
+  const { currentProjectData, setChapterContent, setCurrentChapter } =
+    useScript();
+
   const user_id = 1;
+
+  useEffect(() => {
+    setCurrentChapter(0);
+  }, []);
 
   return (
     <div>
@@ -14,7 +23,7 @@ export default function ProjectPage() {
           /* TODO: Map data from useFetch to ProjectCard Components +
           AddNewProject component */
           <h1>U got projects</h1>
-          {projectData.projects
+          {currentProjectData.projects
             .filter((project) => project.Created_by == user_id)
             .map((project, index) => (
               <ProjectCard

@@ -33,21 +33,17 @@ export default function ClickEditSelectComponent({
 
   function saveData() {
     for (let index = 0; index < projectData.chapters.length; index++) {
-      // console.log(newState != originalInputValue);
-      // console.log('newState is ', newState);
-      // console.log('original is ', originalInputValue);
       if (
         projectData[`${majorField}`][index][`${minorField}`] ==
           originalInputValue &&
         projectData[`${majorField}`][index].Project_ID == projectId
       ) {
-        console.log('reached here');
         if (
           newState !== '' &&
           newState != originalInputValue &&
           newState !== undefined
         ) {
-          projectData[`${majorField}`][index][`${minorField}`] == newState;
+          projectData[`${majorField}`][index][`${minorField}`] = newState;
           setChanged(true);
         } else {
           setNewState(originalInputValue);
@@ -92,14 +88,3 @@ export default function ClickEditSelectComponent({
     </>
   );
 }
-
-/** Example Use:
- <ClickEditComponent
-    originalInputValue={chapterName}
-    inputType={'text'}
-    majorField={'chapters'}
-    minorField={'Chapter_Name'}
-    index={index}
-    placeholder={'Enter Chapter Name'}
-  />
- */

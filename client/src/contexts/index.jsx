@@ -1,4 +1,5 @@
 import React, { useState, useContext, createContext } from 'react';
+import projectData from '../data';
 
 //step 1: creating  a context which allows us to share info between components
 const ScriptContext = createContext();
@@ -12,8 +13,14 @@ export const ScriptProvider = ({ children }) => {
   const [username, setUsername] = useState('');
 
   const [currentProject, setCurrentProject] = useState();
+  const [currentProjectData, setCurrentProjectData] = useState(projectData);
   const [currentChapter, setCurrentChapter] = useState();
+
   const [currentCharacter, setCurrentCharacter] = useState();
+
+  const [currentIdeaID, setCurrentIdeaID] = useState();
+
+  const [currentLocationID, setCurrentLocationID] = useState();
 
   return (
     <ScriptContext.Provider
@@ -30,6 +37,12 @@ export const ScriptProvider = ({ children }) => {
         setCurrentProject,
         currentCharacter,
         setCurrentCharacter,
+        currentProjectData,
+        setCurrentProjectData,
+        currentIdeaID,
+        setCurrentIdeaID,
+        currentLocationID,
+        setCurrentLocationID,
       }}
     >
       {children}

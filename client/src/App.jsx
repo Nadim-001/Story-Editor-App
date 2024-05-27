@@ -12,6 +12,10 @@ import {
   CharacterShowPage,
   ProjectIndexPage,
   ProjectShowPage,
+  LocationIndexPage,
+  LocationShowPage,
+  IdeaIndexPage,
+  IdeaShowPage,
 } from './pages';
 import { ScriptProvider } from './contexts';
 
@@ -43,6 +47,14 @@ function App() {
             <Route path=":projectId/characters">
               <Route index element={<CharacterIndexPage />} />
               <Route path=":characterId" element={<CharacterShowPage />} />
+            </Route>
+            <Route path=":projectId/ideas">
+              <Route index element={<IdeaIndexPage />} />
+              <Route path=":ideaId" element={<IdeaShowPage />} />
+            </Route>
+            <Route path=":projectId/locations">
+              <Route index element={<LocationIndexPage />} />
+              <Route path=":locationId" element={<LocationShowPage />} />
             </Route>
           </Route>
         </Route>

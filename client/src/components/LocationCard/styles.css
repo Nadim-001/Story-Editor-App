@@ -1,0 +1,7 @@
+.location-card-container {
+  border: 5px solid black;
+}
+
+.current-location {
+  background-color: yellow;
+}

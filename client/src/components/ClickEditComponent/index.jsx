@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import useOutsideClick from '../useOutsideClick';
-import projectData from '../../data';
+//import projectData from '../../data';
 import { useParams } from 'react-router-dom';
+import { useScript } from '../../contexts';
 
 export default function ClickEditComponent({
   originalInputValue,
@@ -17,10 +18,13 @@ export default function ClickEditComponent({
   const ref = useRef();
 
   const { projectId } = useParams();
+  const { currentProjectData, setCurrentProjectData } = useScript();
 
   const [editing, setEditing] = useState(false);
   const [newState, setNewState] = useState(originalInputValue);
   const [changed, setChanged] = useState(false);
+
+  const [newOriginalValue, setNewOriginalValue] = useState();
 
   useOutsideClick(ref, () => setEditing(false));
 
@@ -30,32 +34,36 @@ export default function ClickEditComponent({
 
   function handleOnChange(e) {
     setNewState(e.target.value);
-    console.log(e.target.value, typeof e.target.value);
+    //console.log(e.target.value, typeof e.target.value);
   }
 
   function saveData() {
+    let projectData = currentProjectData;
     for (let index = 0; index < projectData.chapters.length; index++) {
       // console.log(projectData[`${majorField}`][index][`${minorField}`]);
       if (
-        projectData[`${majorField}`][index][`${minorField}`] ==
-          originalInputValue &&
+        (projectData[`${majorField}`][index][`${minorField}`] ==
+          originalInputValue ||
+          projectData[`${majorField}`][index][`${minorField}`] ==
+            newOriginalValue) &&
         projectData[`${majorField}`][index].Project_ID == projectId
       ) {
         console.log('reached if 1');
-        if (
-          newState !== '' &&
-          newState != originalInputValue &&
-          newState !== undefined
-        ) {
+        if (newState !== '' && newState !== undefined) {
           console.log('reached if 2');
           if (inputType == 'number') {
-            projectData[`${majorField}`][index][`${minorField}`] ==
+            projectData[`${majorField}`][index][`${minorField}`] =
               Number(newState);
             setChanged(true);
+            setCurrentProjectData(projectData);
+            setNewOriginalValue(newState);
           } else {
             //else it is a string. date is saved is given in string from input
-            projectData[`${majorField}`][index][`${minorField}`] == newState;
+            projectData[`${majorField}`][index][`${minorField}`] = newState;
+
             setChanged(true);
+            setCurrentProjectData(projectData);
+            setNewOriginalValue(newState);
           }
         } else {
           console.log('reached else');

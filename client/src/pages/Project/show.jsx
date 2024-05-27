@@ -18,51 +18,37 @@ export default function show() {
   const { projectId } = useParams();
   const navigate = useNavigate();
   //TODO: use currentProject to fetch the Chapters
-  const { currentProject, currentChapter } = useScript();
+  const {
+    currentProject,
+    currentChapter,
+    setCurrentProjectData,
+    currentProjectData,
+  } = useScript();
 
-  const [scriptValue, setScriptValue] = useState('');
   const [chapterContent, setChapterContent] = useState([]);
-
-  const modules = {
-    toolbar: [
-      [{ header: [1, 2, 3, 4, 5, 6, false] }],
-      [{ font: [] }],
-      [{ size: [] }],
-      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-      ['link', 'formula'],
-      [{ script: 'sub' }, { script: 'super' }],
-      [
-        { list: 'ordered' },
-        { list: 'bullet' },
-        { indent: '-1' },
-        { indent: '+1' },
-      ],
-      [{ color: [] }, { background: [] }],
-      [{ align: '' }],
-      [{ align: 'center' }],
-      [{ align: 'right' }],
-      [{ align: 'justify' }],
-    ],
-  };
-
-  const chapter_content = [{ type: 'scene-heading' }];
+  const [changed, setChanged] = useState(false);
 
   function handleCharacters() {
     navigate('./characters');
   }
-
-  function handleMaps() {}
-  function handleIdeas() {}
+  function handleLocations() {
+    navigate('./locations');
+  }
+  function handleIdeas() {
+    navigate('./ideas');
+  }
 
   useEffect(() => {
     if (currentChapter) {
-      const newContent = projectData.chapters.filter(
+      const newContent = currentProjectData.chapters.filter(
         (chapter) => chapter.Chapter_ID == currentChapter
       );
       setChapterContent(newContent[0].Chapter_Content);
+
       // console.log(newContent[0].Chapter_Content);
+      // console.log(chapterContent);
     }
-  }, [currentChapter]);
+  }, [currentChapter, changed]);
 
   return (
     <div className="project-container">
@@ -72,7 +58,7 @@ export default function show() {
         </div>
         <div className="nav-container">
           <button onClick={handleCharacters}>Characters</button>
-          <button onClick={handleMaps}>Locations</button>
+          <button onClick={handleLocations}>Locations</button>
           <button onClick={handleIdeas}>Ideas</button>
           <button>Systems</button>
           <button>Tropes</button>
@@ -82,7 +68,7 @@ export default function show() {
           <button>Archived</button>
         </div>
         <div className="chapters-container">
-          {projectData.chapters
+          {currentProjectData.chapters
             .filter((chapter) => chapter.Project_ID == projectId)
             .map((chapter, index) => (
               <ChapterCard
@@ -99,23 +85,57 @@ export default function show() {
       <div className="script-container">
         <div className="page">
           <div className="page-area">
-            {chapterContent
-              ? chapterContent.map((chapter, index) => {
-                  console.log(chapter);
-                  if (chapter.type == 'dialogue') {
-                    return <SceneDialogue scene={chapter} index={index} />;
-                  }
-                  if (chapter.type == 'action') {
-                    return <SceneAction scene={chapter} index={index} />;
-                  }
-                  if (chapter.type == 'scene-headings') {
-                    return <SceneHeading scene={chapter} index={index} />;
-                  }
-                  if (chapter.type == 'transition') {
-                    return <SceneTransition scene={chapter} index={index} />;
-                  }
-                })
-              : null}
+            {chapterContent.length ? (
+              chapterContent.map((chapter, index) => {
+                // console.log(chapter);
+                if (chapter.type == 'dialogue') {
+                  return (
+                    <SceneDialogue
+                      scene={chapter}
+                      index={index}
+                      setChanged={setChanged}
+                      changed={changed}
+                    />
+                  );
+                }
+                if (chapter.type == 'action') {
+                  return (
+                    <SceneAction
+                      scene={chapter}
+                      index={index}
+                      setChanged={setChanged}
+                      changed={changed}
+                    />
+                  );
+                }
+                if (chapter.type == 'scene-headings') {
+                  return (
+                    <SceneHeading
+                      scene={chapter}
+                      index={index}
+                      setChanged={setChanged}
+                      changed={changed}
+                    />
+                  );
+                }
+                if (chapter.type == 'transition') {
+                  return (
+                    <SceneTransition
+                      scene={chapter}
+                      index={index}
+                      setChanged={setChanged}
+                      changed={changed}
+                    />
+                  );
+                }
+              })
+            ) : currentProjectData.chapters.filter(
+                (chapter) => chapter.Project_ID == projectId
+              ).length ? (
+              <h2>Select Chapter</h2>
+            ) : (
+              <h2>Add Chapter to begin editing</h2>
+            )}
           </div>
         </div>
       </div>

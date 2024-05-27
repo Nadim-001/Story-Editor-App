@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import projectData from '../../data';
+import currentProjectData from '../../data';
 import { ClickEditComponent, ClickEditSelectComponent } from '../../components';
+import { useScript } from '../../contexts';
 
 export default function CharacterShowPage() {
   const navigate = useNavigate();
@@ -10,18 +11,20 @@ export default function CharacterShowPage() {
   const [characterData, setCharacterData] = useState({});
   const [characterIndex, setCharacterIndex] = useState();
 
+  const { currentProjectData } = useScript();
+
   function handleBackBtn() {
     navigate(`../`);
   }
 
   function getCharacterData() {
     //TODO: change to fetch
-    for (let index = 0; index < projectData.characters.length; index++) {
+    for (let index = 0; index < currentProjectData.characters.length; index++) {
       if (
-        projectData.characters[index].Character_ID == characterId &&
-        projectData.characters[index].Project_ID == projectId
+        currentProjectData.characters[index].Character_ID == characterId &&
+        currentProjectData.characters[index].Project_ID == projectId
       ) {
-        setCharacterData(projectData.characters[index]);
+        setCharacterData(currentProjectData.characters[index]);
         setCharacterIndex(index);
       }
     }

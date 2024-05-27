@@ -8,6 +8,9 @@ export { default as ChapterCard } from './ChapterCard';
 export { default as CharacterCard } from './CharacterCard';
 export { default as ClickEditComponent } from './ClickEditComponent';
 export { default as ClickEditSelectComponent } from './ClickEditSelectComponent';
+export { default as IdeaCard } from './IdeaCard';
+export { default as IdeaModal } from './IdeaModal';
+export { default as LocationCard } from './LocationCard';
 
 export { default as AddScriptComponent } from './AddScriptComponent';
 export { default as AddScriptModal } from './AddScriptModal';

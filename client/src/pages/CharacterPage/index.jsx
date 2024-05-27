@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import projectData from '../../data';
 import { CharacterCard } from '../../components';
+import { useScript } from '../../contexts';
 
 export default function CharacterIndexPage() {
   /* Fetch Characters
@@ -14,6 +15,7 @@ export default function CharacterIndexPage() {
   const [hasCharacters, setHasCharacters] = useState(true);
 
   const { projectId } = useParams();
+  const { currentProjectData } = useScript();
   // console.log(projectData);
 
   function handleBackBtn() {
@@ -27,7 +29,7 @@ export default function CharacterIndexPage() {
           /* Map data from useFetch to CharacterCard Components +
           AddNewCharacter component */
           <h1>U got characters</h1>
-          {projectData.characters
+          {currentProjectData.characters
             .filter((character) => character.Project_ID == projectId)
             .map((character) => (
               <CharacterCard character={character} />

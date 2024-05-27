@@ -1,6 +1,7 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useOutsideClick from '../useOutsideClick';
+import { useScript } from '../../contexts';
 
 export default function AddScriptModal({
   id = null,
@@ -8,12 +9,45 @@ export default function AddScriptModal({
   modalRef,
   modalPosition,
   setShowModal,
+  index,
+  positioning,
+  setChanged,
+  changed,
 }) {
-  const navigate = useNavigate();
   useOutsideClick(modalRef, () => setShowModal(false));
 
+  const { projectId } = useParams();
+
+  const { currentProjectData, setCurrentProjectData, currentChapter } =
+    useScript();
+
+  function addObjectToPosition(obj) {
+    let projectData = currentProjectData;
+    for (let i = 0; i < projectData.chapters.length; i++) {
+      if (projectData.chapters[i].Chapter_ID == currentChapter) {
+        let newContent = projectData.chapters[i].Chapter_Content;
+        if (positioning == 'top') {
+          if (index == 0) {
+            newContent.unshift(obj);
+          } else {
+            newContent.splice(index, 0, obj);
+          }
+          projectData.chapters[index].Chapter_Content = newContent;
+          setCurrentProjectData(projectData);
+        } else if (positioning == 'bottom') {
+          newContent.splice(index + 1, 0, obj);
+          projectData.chapters[index].Chapter_Content = newContent;
+          setCurrentProjectData(projectData);
+        }
+      }
+    }
+    setChanged(!changed);
+  }
+
   function handleSceneHeadings() {
+    let randomNum = Math.floor(Math.random() * 1000000);
     const scriptObject = {
+      Scene_ID: randomNum,
       type: 'scene-headings',
       is_subheading: false, //dont need time or interior for subheading
       interior: 'INT. EXT. INT./EXT.',
@@ -21,31 +55,44 @@ export default function AddScriptModal({
       time: 'DAWN DAY DUSK NIGHT',
       //ALL CAPS FOR THIS
     };
+    addObjectToPosition(scriptObject);
   }
 
   function handleAction() {
+    let randomNum = Math.floor(Math.random() * 10000);
+
     const scriptObject = {
+      Scene_ID: randomNum,
       type: 'action',
       content: 'Enter Action Scene',
     };
+    addObjectToPosition(scriptObject);
   }
 
   function handleDialogue() {
+    let randomNum = Math.floor(Math.random() * 10000);
+
     const scriptObject = {
+      Scene_ID: randomNum,
       type: 'dialogue',
       character: 'Enter Character Name',
       extension: 'V.O. Voice Over',
       parenthetical: '(whispering)',
       dialogue: 'Enter Dialogue',
     };
+    addObjectToPosition(scriptObject);
   }
 
   function handleTransition() {
+    let randomNum = Math.floor(Math.random() * 10000);
+
     const scriptObject = {
+      Scene_ID: randomNum,
       type: 'transition',
       transition: 'CUT TO:',
       //All Capital
     };
+    addObjectToPosition(scriptObject);
   }
 
   return (

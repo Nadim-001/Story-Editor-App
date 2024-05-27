@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import projectData from '../../data';
-import { LocationCard } from '../../components';
+import { IdeaCard } from '../../components';
 import { useScript } from '../../contexts';
 
-export default function LocationIndexPage() {
+export default function IdeaIndexPage() {
   const navigate = useNavigate();
 
-  //FIXME: No backend so pretend no locations fetched
-  const [hasLocations, setHasLocations] = useState(true);
+  //FIXME: No backend so pretend no ideas fetched
+  const [hasIdeas, setHasIdeas] = useState(true);
 
   const { projectId } = useParams();
   const { currentProjectData } = useScript();
@@ -19,23 +19,23 @@ export default function LocationIndexPage() {
 
   return (
     <div>
-      {hasLocations ? (
+      {hasIdeas ? (
         <div>
-          /* Map data from useFetch to LocationCard Components + AddNewIdea
+          /* Map data from useFetch to IdeaCard Components + AddNewIdea
           component */
-          <h1>U got locations</h1>
-          {currentProjectData.locations
-            .filter((location) => location.Project_ID == projectId)
-            .map((location) => (
-              <LocationCard location={location} />
+          <h1>U got characters</h1>
+          {currentProjectData.ideas
+            .filter((idea) => idea.Project_ID == projectId)
+            .map((idea) => (
+              <IdeaCard idea={idea} />
             ))}
           <button onClick={handleBackBtn}>Back Button</button>
         </div>
       ) : (
         <div>
           <p>Project ID is {id}</p>
-          <p>No locations detected</p>
-          //AddNewLocation component
+          <p>No characters detected</p>
+          //AddNewCharacter component
           <button onClick={handleBackBtn}>Back Button</button>
         </div>
       )}
