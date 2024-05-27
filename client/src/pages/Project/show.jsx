@@ -50,7 +50,7 @@ export default function show() {
       for (let i = 0; i < newContent[0].Chapter_Content.length; i++) {
         if (newContent[0].Chapter_Content[i].type == 'dialogue') {
           charArr.includes(newContent[0].Chapter_Content[i].character)
-            ? console.log(newContent[0].Chapter_Content[i].character)
+            ? null
             : charArr.push(newContent[0].Chapter_Content[i].character);
         }
         setCharacterArray(charArr);

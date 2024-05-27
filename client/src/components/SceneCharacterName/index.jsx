@@ -67,7 +67,9 @@ export default function SceneCharacterName({
           newExtensionValue;
 
         //setCurrentProjectData(projectData);
-        console.log(projectData.chapters[i].Chapter_Content[index][`${field}`]);
+        console.log(
+          projectData.chapters[i].Chapter_Content[index][`extension`]
+        );
       }
     }
   }
@@ -79,7 +81,10 @@ export default function SceneCharacterName({
   }
 
   useEffect(() => {
-    if (editing == false && lastValue !== newState) {
+    if (
+      editing == false &&
+      (lastValue !== newState || lastExtensionValue !== newExtensionValue)
+    ) {
       saveData();
       setLastValue(newState);
       setLastExtensionValue(newExtensionValue);
@@ -104,8 +109,8 @@ export default function SceneCharacterName({
     <>
       {!editing ? (
         <div onDoubleClick={handleOnDoubleClick}>
-          {newState ? newState : originalInputValue} (
-          {newExtensionValue ? newExtensionValue : originalExtensionValue})
+          {newState ? newState : originalInputValue}{' '}
+          {newExtensionValue != '' ? `(${newExtensionValue})` : null}
         </div>
       ) : (
         <div ref={ref} style={{ border: '1px solid black' }}>
