@@ -21,3 +21,4 @@ export { default as SceneDialogue } from './SceneDialogue';
 export { default as SceneAction } from './SceneAction';
 export { default as SceneHeading } from './SceneHeading';
 export { default as SceneTransition } from './SceneTransition';
+export { default as SceneCharacterName } from './SceneCharacterName';

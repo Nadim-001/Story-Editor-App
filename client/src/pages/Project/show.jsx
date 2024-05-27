@@ -27,6 +27,7 @@ export default function show() {
 
   const [chapterContent, setChapterContent] = useState([]);
   const [changed, setChanged] = useState(false);
+  const [characterArray, setCharacterArray] = useState([]);
 
   function handleCharacters() {
     navigate('./characters');
@@ -44,7 +45,17 @@ export default function show() {
         (chapter) => chapter.Chapter_ID == currentChapter
       );
       setChapterContent(newContent[0].Chapter_Content);
-
+      setCharacterArray([]);
+      let charArr = [];
+      for (let i = 0; i < newContent[0].Chapter_Content.length; i++) {
+        if (newContent[0].Chapter_Content[i].type == 'dialogue') {
+          charArr.includes(newContent[0].Chapter_Content[i].character)
+            ? console.log(newContent[0].Chapter_Content[i].character)
+            : charArr.push(newContent[0].Chapter_Content[i].character);
+        }
+        setCharacterArray(charArr);
+      }
+      console.log(characterArray);
       // console.log(newContent[0].Chapter_Content);
       // console.log(chapterContent);
     }
@@ -95,6 +106,7 @@ export default function show() {
                       index={index}
                       setChanged={setChanged}
                       changed={changed}
+                      characterArray={characterArray}
                     />
                   );
                 }

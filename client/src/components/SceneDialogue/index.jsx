@@ -2,8 +2,15 @@ import React, { useRef, useState } from 'react';
 import SceneClickEditComponent from '../SceneClickEditComponent';
 import AddScriptComponent from '../AddScriptComponent';
 import useOutsideClick from '../useOutsideClick';
+import SceneCharacterName from '../SceneCharacterName';
 
-export default function SceneDialogue({ scene, index, setChanged, changed }) {
+export default function SceneDialogue({
+  scene,
+  index,
+  setChanged,
+  changed,
+  characterArray,
+}) {
   const ref = useRef();
   const [showButton, setShowButton] = useState(false);
   function handleOnClick() {
@@ -27,13 +34,25 @@ export default function SceneDialogue({ scene, index, setChanged, changed }) {
         />
       ) : null}
       <h3>
-        <SceneClickEditComponent
+        {/* <SceneClickEditComponent
           originalInputValue={scene.character}
           inputType={'text'}
           index={index}
           field={'character'}
           placeholder={'Enter Character Name'}
           upperCase={true}
+        /> */}
+        <SceneCharacterName
+          originalInputValue={scene.character}
+          inputType={'text'}
+          index={index}
+          field={'character'}
+          changed={changed}
+          setChanged={setChanged}
+          characterArray={characterArray}
+          placeholder={'Enter Character Name'}
+          upperCase={true}
+          originalExtensionValue={scene.extension}
         />
       </h3>
       <h4>
