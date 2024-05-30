@@ -48,6 +48,8 @@ export default function IdeaShowPage() {
           inputType={'text'}
           majorField={'ideas'}
           minorField={'Title'}
+          otherIdField={'Idea_ID'}
+          otherIdValue={ideaId}
           index={ideaIndex}
           placeholder={'Enter Idea Title'}
         />
@@ -61,6 +63,8 @@ export default function IdeaShowPage() {
           inputType={'text'}
           majorField={'ideas'}
           minorField={'Content'}
+          otherIdField={'Idea_ID'}
+          otherIdValue={ideaId}
           index={ideaIndex}
           placeholder={'Enter Idea Content'}
         />
@@ -75,6 +79,8 @@ export default function IdeaShowPage() {
           inputType={'text'}
           majorField={'ideas'}
           minorField={'Status'}
+          otherIdField={'Idea_ID'}
+          otherIdValue={ideaId}
           index={ideaIndex}
           placeholder={'Enter Idea Status'}
         />
@@ -96,6 +102,7 @@ export default function IdeaShowPage() {
           <p>No Related Ideas</p>
         )}
       </div>
+      <button onClick={handleBackBtn}>Back Button</button>
     </div>
   );
 }

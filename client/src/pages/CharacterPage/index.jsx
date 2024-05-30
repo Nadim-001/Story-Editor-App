@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import projectData from '../../data';
-import { CharacterCard } from '../../components';
+import { CharacterCard, NewCharacterModal } from '../../components';
 import { useScript } from '../../contexts';
 
 export default function CharacterIndexPage() {
@@ -14,12 +14,22 @@ export default function CharacterIndexPage() {
   //FIXME: No backend so pretend no characters fetched
   const [hasCharacters, setHasCharacters] = useState(true);
 
+  const [showModal, setShowModal] = useState(false);
+
   const { projectId } = useParams();
   const { currentProjectData } = useScript();
   // console.log(projectData);
 
   function handleBackBtn() {
     navigate(`../${projectId}`);
+  }
+
+  function handleToggleModalPopup() {
+    setShowModal(!showModal);
+  }
+
+  function onClose() {
+    setShowModal(false);
   }
 
   return (
@@ -29,6 +39,8 @@ export default function CharacterIndexPage() {
           /* Map data from useFetch to CharacterCard Components +
           AddNewCharacter component */
           <h1>U got characters</h1>
+          <button onClick={handleToggleModalPopup}>Add New Character</button>
+          {showModal ? <NewCharacterModal onClose={onClose} /> : null}
           {currentProjectData.characters
             .filter((character) => character.Project_ID == projectId)
             .map((character) => (
@@ -41,6 +53,8 @@ export default function CharacterIndexPage() {
           <p>Project ID is {id}</p>
           <p>No characters detected</p>
           //AddNewCharacter component
+          <button onClick={handleToggleModalPopup}>Add New Character</button>
+          {showModal ? <NewCharacterModal onClose={onClose} /> : null}
           <button onClick={handleBackBtn}>Back Button</button>
         </div>
       )}

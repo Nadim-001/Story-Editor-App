@@ -48,6 +48,8 @@ export default function LocationShowPage() {
           inputType={'text'}
           majorField={'locations'}
           minorField={'Name'}
+          otherIdField={'Location_ID'}
+          otherIdValue={locationId}
           index={locationIndex}
           placeholder={'Enter Location Name'}
         />
@@ -61,6 +63,8 @@ export default function LocationShowPage() {
           inputType={'number'}
           majorField={'locations'}
           minorField={'Population'}
+          otherIdField={'Location_ID'}
+          otherIdValue={locationId}
           index={locationIndex}
           placeholder={'Enter Location Population'}
         />
@@ -74,6 +78,8 @@ export default function LocationShowPage() {
           inputType={'text'}
           majorField={'locations'}
           minorField={'Description'}
+          otherIdField={'Location_ID'}
+          otherIdValue={locationId}
           index={locationIndex}
           placeholder={'Enter Location Description'}
         />
@@ -87,6 +93,8 @@ export default function LocationShowPage() {
           inputType={'text'}
           majorField={'locations'}
           minorField={'Coordinates'}
+          otherIdField={'Location_ID'}
+          otherIdValue={locationId}
           index={locationIndex}
           placeholder={'Enter Location Coordinates'}
         />
@@ -106,6 +114,7 @@ export default function LocationShowPage() {
           <p>No Related Locations</p>
         )}
       </div>
+      <button onClick={handleBackBtn}>Back Button</button>
     </div>
   );
 }

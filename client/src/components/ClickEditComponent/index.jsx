@@ -9,11 +9,14 @@ export default function ClickEditComponent({
   inputType,
   majorField,
   minorField,
+  otherIdField,
+  otherIdValue,
   index,
   placeholder = null,
 }) {
   //Major Field is projectData.MajorField. it could be characters, chapters or whatever.
   //Minor Field is projectData.[e.g. chapters].MinorField it could be chapter_name, text or whatever
+  //OtherID is just in case there are 2 e.g. characters with the same name. we just want 1 of the names to be updated in the 'for loop' so we differentiate them via their other ID
 
   const ref = useRef();
 
@@ -39,18 +42,23 @@ export default function ClickEditComponent({
 
   function saveData() {
     let projectData = currentProjectData;
-    for (let index = 0; index < projectData.chapters.length; index++) {
+    console.log(`${otherIdField} is ${otherIdValue}`);
+    for (let index = 0; index < projectData[`${majorField}`].length; index++) {
       // console.log(projectData[`${majorField}`][index][`${minorField}`]);
       if (
         (projectData[`${majorField}`][index][`${minorField}`] ==
           originalInputValue ||
           projectData[`${majorField}`][index][`${minorField}`] ==
             newOriginalValue) &&
-        projectData[`${majorField}`][index].Project_ID == projectId
+        projectData[`${majorField}`][index].Project_ID == projectId &&
+        projectData[`${majorField}`][index][`${otherIdField}`] == otherIdValue
       ) {
-        console.log('reached if 1');
+        //console.log('reached if 1');
+        console.log(
+          projectData[`${majorField}`][index][`${otherIdField}`] == otherIdValue
+        );
         if (newState !== '' && newState !== undefined) {
-          console.log('reached if 2');
+          //console.log('reached if 2');
           if (inputType == 'number') {
             projectData[`${majorField}`][index][`${minorField}`] =
               Number(newState);
@@ -66,7 +74,7 @@ export default function ClickEditComponent({
             setNewOriginalValue(newState);
           }
         } else {
-          console.log('reached else');
+          //console.log('reached else');
           setNewState(originalInputValue);
           setChanged(false);
         }

@@ -7,10 +7,6 @@
   padding: 1vh 2vw;
 }
 
-.current-chapter {
-  background-color: yellow;
-}
-
-.delete-btn {
+.add-button {
   cursor: pointer;
 }

@@ -8,6 +8,7 @@ import {
   SceneAction,
   SceneHeading,
   SceneTransition,
+  NewChapterButton,
 } from '../../components';
 import projectData from '../../data';
 import { useScript } from '../../contexts';
@@ -28,6 +29,8 @@ export default function show() {
   const [chapterContent, setChapterContent] = useState([]);
   const [changed, setChanged] = useState(false);
   const [characterArray, setCharacterArray] = useState([]);
+
+  const [projectData, setProjectData] = useState(currentProjectData);
 
   function handleCharacters() {
     navigate('./characters');
@@ -59,6 +62,7 @@ export default function show() {
       // console.log(newContent[0].Chapter_Content);
       // console.log(chapterContent);
     }
+    setProjectData(currentProjectData);
   }, [currentChapter, changed]);
 
   return (
@@ -79,7 +83,7 @@ export default function show() {
           <button>Archived</button>
         </div>
         <div className="chapters-container">
-          {currentProjectData.chapters
+          {projectData.chapters
             .filter((chapter) => chapter.Project_ID == projectId)
             .map((chapter, index) => (
               <ChapterCard
@@ -88,9 +92,15 @@ export default function show() {
                 index={index}
               />
             ))}
-          {/* <ChapterCard chapterID={1} chapterName={'Pilot'} index={1} />
-          <ChapterCard chapterID={3} chapterName={'middle'} index={2} />
-          <ChapterCard chapterID={4} chapterName={'end'} index={3} /> */}
+          <NewChapterButton
+            chapterNumber={
+              currentProjectData.chapters.filter(
+                (chapter) => chapter.Project_ID == projectId
+              ).length + 1
+            }
+            changed={changed}
+            setChanged={setChanged}
+          />
         </div>
       </div>
       <div className="script-container">

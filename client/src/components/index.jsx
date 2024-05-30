@@ -11,6 +11,10 @@ export { default as ClickEditSelectComponent } from './ClickEditSelectComponent'
 export { default as IdeaCard } from './IdeaCard';
 export { default as IdeaModal } from './IdeaModal';
 export { default as LocationCard } from './LocationCard';
+export { default as NewChapterButton } from './NewChapterButton';
+export { default as NewCharacterModal } from './NewCharacterModal';
+export { default as NewIdeaModal } from './NewIdeaModal';
+export { default as NewLocationModal } from './NewLocationModal';
 
 export { default as AddScriptComponent } from './AddScriptComponent';
 export { default as AddScriptModal } from './AddScriptModal';

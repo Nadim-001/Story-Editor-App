@@ -49,6 +49,8 @@ export default function CharacterShowPage() {
             inputType={'text'}
             majorField={'characters'}
             minorField={'Name'}
+            otherIdField={'Character_ID'}
+            otherIdValue={characterId}
             index={characterIndex}
             placeholder={'Enter Character Name'}
           />
@@ -60,6 +62,8 @@ export default function CharacterShowPage() {
             inputType={'number'}
             majorField={'characters'}
             minorField={'Age'}
+            otherIdField={'Character_ID'}
+            otherIdValue={characterId}
             index={characterIndex}
             placeholder={'Enter Character Age'}
           />
@@ -71,6 +75,8 @@ export default function CharacterShowPage() {
             inputType={'text'}
             majorField={'characters'}
             minorField={'Description'}
+            otherIdField={'Character_ID'}
+            otherIdValue={characterId}
             index={characterIndex}
             placeholder={'Enter Description'}
           />
@@ -82,6 +88,8 @@ export default function CharacterShowPage() {
             inputType={'text'}
             majorField={'characters'}
             minorField={'Role'}
+            otherIdField={'Character_ID'}
+            otherIdValue={characterId}
             index={characterIndex}
             placeholder={'Enter Role'}
           />
@@ -95,6 +103,8 @@ export default function CharacterShowPage() {
             inputType={'number'}
             majorField={'characters'}
             minorField={'First_Chapter_Appearance'}
+            otherIdField={'Character_ID'}
+            otherIdValue={characterId}
             index={characterIndex}
             placeholder={'Enter First Chapter Appearance'}
           />
@@ -106,6 +116,8 @@ export default function CharacterShowPage() {
             inputType={'text'}
             majorField={'characters'}
             minorField={'Description'}
+            otherIdField={'Character_ID'}
+            otherIdValue={characterId}
             index={characterIndex}
             placeholder={'Enter Description'}
           />
@@ -131,6 +143,8 @@ export default function CharacterShowPage() {
             inputType={'date'}
             majorField={'characters'}
             minorField={'Date_of_Birth'}
+            otherIdField={'Character_ID'}
+            otherIdValue={characterId}
             index={characterIndex}
             placeholder={'Enter Date of Birth'}
           />
@@ -142,8 +156,23 @@ export default function CharacterShowPage() {
             inputType={'date'}
             majorField={'characters'}
             minorField={'Date_of_Death'}
+            otherIdField={'Character_ID'}
+            otherIdValue={characterId}
             index={characterIndex}
             placeholder={'Enter Date of Death'}
+          />
+        </div>
+        <div>
+          <h2>Interests & Hobbies: {characterData.Interests_Hobbies}</h2>
+          <ClickEditComponent
+            originalInputValue={characterData.Interests_Hobbies}
+            inputType={'text'}
+            majorField={'characters'}
+            minorField={'Interests_Hobbies'}
+            otherIdField={'Character_ID'}
+            otherIdValue={characterId}
+            index={characterIndex}
+            placeholder={'Enter Description'}
           />
         </div>
       </div>

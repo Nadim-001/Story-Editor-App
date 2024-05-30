@@ -16,6 +16,10 @@ export default function ChapterCard({ chapterID, chapterName, index }) {
     // console.log(currentChapter);
   }
 
+  function handleOnDelete() {
+    console.log(`deleting chapter ${index + 1}: ${chapterName}`);
+  }
+
   //index is the chapter number
   return (
     <div
@@ -24,17 +28,20 @@ export default function ChapterCard({ chapterID, chapterName, index }) {
         currentChapter == chapterID ? 'current-chapter' : null
       }`}
       onClick={handleOnClick}
+      key={chapterID}
     >
       <ClickEditComponent
         originalInputValue={chapterName}
         inputType={'text'}
         majorField={'chapters'}
         minorField={'Chapter_Name'}
+        otherIdField={'Chapter_ID'}
+        otherIdValue={chapterID}
         index={index}
         placeholder={'Enter Chapter Name'}
       />
 
-      <HiTrash />
+      <HiTrash className="delete-btn" onClick={handleOnDelete} />
     </div>
   );
 }
