@@ -9,6 +9,7 @@ import {
   SceneHeading,
   SceneTransition,
   NewChapterButton,
+  DeleteModal,
 } from '../../components';
 import projectData from '../../data';
 import { useScript } from '../../contexts';
@@ -65,11 +66,33 @@ export default function show() {
     setProjectData(currentProjectData);
   }, [currentChapter, changed]);
 
+  const [showModal, setShowModal] = useState(false);
+
+  function handleToggleModalPopup() {
+    setShowModal(!showModal);
+  }
+
+  function onClose() {
+    setShowModal(false);
+  }
+
   return (
     <div className="project-container">
       <div className="left-bar">
         <div className="project-title">
           <h1>Project Title {projectId}</h1>
+          <button onClick={handleToggleModalPopup}>Delete</button>
+          {showModal ? (
+            <DeleteModal
+              onClose={onClose}
+              majorField={'projects'}
+              fieldData={
+                projectData.projects.filter(
+                  (project) => project.Project_ID == projectId
+                )[0]
+              }
+            />
+          ) : null}
         </div>
         <div className="nav-container">
           <button onClick={handleCharacters}>Characters</button>
@@ -86,11 +109,7 @@ export default function show() {
           {projectData.chapters
             .filter((chapter) => chapter.Project_ID == projectId)
             .map((chapter, index) => (
-              <ChapterCard
-                chapterID={chapter.Chapter_ID}
-                chapterName={chapter.Chapter_Name}
-                index={index}
-              />
+              <ChapterCard chapterData={chapter} index={index} />
             ))}
           <NewChapterButton
             chapterNumber={

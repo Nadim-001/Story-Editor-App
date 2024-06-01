@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import currentProjectData from '../../data';
-import { ClickEditComponent, ClickEditSelectComponent } from '../../components';
+import {
+  ClickEditComponent,
+  ClickEditSelectComponent,
+  DeleteModal,
+} from '../../components';
 import { useScript } from '../../contexts';
 
 export default function CharacterShowPage() {
@@ -15,6 +19,16 @@ export default function CharacterShowPage() {
 
   function handleBackBtn() {
     navigate(`../`);
+  }
+
+  const [showModal, setShowModal] = useState(false);
+
+  function handleToggleModalPopup() {
+    setShowModal(!showModal);
+  }
+
+  function onClose() {
+    setShowModal(false);
   }
 
   function getCharacterData() {
@@ -177,6 +191,14 @@ export default function CharacterShowPage() {
         </div>
       </div>
       <button onClick={handleBackBtn}>Back Button</button>
+      <button onClick={handleToggleModalPopup}>Delete</button>
+      {showModal ? (
+        <DeleteModal
+          onClose={onClose}
+          majorField={'characters'}
+          fieldData={characterData}
+        />
+      ) : null}
     </div>
   );
 }

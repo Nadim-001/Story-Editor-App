@@ -14,6 +14,15 @@ export default function ProjectPage() {
 
   useEffect(() => {
     setCurrentChapter(0);
+    if (
+      currentProjectData.projects.filter(
+        (project) => project.Created_by == user_id
+      ).length > 0
+    ) {
+      setHasProjects(true);
+    } else {
+      setHasProjects(false);
+    }
   }, []);
 
   return (
@@ -38,6 +47,7 @@ export default function ProjectPage() {
       ) : (
         <div>
           <p>No projects detected </p>
+          <h1>OH NO</h1>
           <NewProjectButton />
         </div>
       )}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import projectData from '../../data';
 import { CharacterCard, NewCharacterModal } from '../../components';
@@ -12,7 +12,7 @@ export default function CharacterIndexPage() {
   const navigate = useNavigate();
 
   //FIXME: No backend so pretend no characters fetched
-  const [hasCharacters, setHasCharacters] = useState(true);
+  const [hasCharacters, setHasCharacters] = useState(false);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -32,6 +32,18 @@ export default function CharacterIndexPage() {
     setShowModal(false);
   }
 
+  useEffect(() => {
+    if (
+      currentProjectData.characters.filter(
+        (character) => character.Project_ID == projectId
+      ).length > 0
+    ) {
+      setHasCharacters(true);
+    } else {
+      setHasCharacters(false);
+    }
+  }, []);
+
   return (
     <div>
       {hasCharacters ? (
@@ -44,13 +56,16 @@ export default function CharacterIndexPage() {
           {currentProjectData.characters
             .filter((character) => character.Project_ID == projectId)
             .map((character) => (
-              <CharacterCard character={character} />
+              <CharacterCard
+                character={character}
+                key={character.Character_ID}
+              />
             ))}
           <button onClick={handleBackBtn}>Back Button</button>
         </div>
       ) : (
         <div>
-          <p>Project ID is {id}</p>
+          <p>Project ID is {projectId}</p>
           <p>No characters detected</p>
           //AddNewCharacter component
           <button onClick={handleToggleModalPopup}>Add New Character</button>

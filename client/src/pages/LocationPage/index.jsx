@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import projectData from '../../data';
 import { LocationCard, NewLocationModal } from '../../components';
@@ -26,6 +26,17 @@ export default function LocationIndexPage() {
   function onClose() {
     setShowModal(false);
   }
+  useEffect(() => {
+    if (
+      currentProjectData.locations.filter(
+        (location) => location.Project_ID == projectId
+      ).length > 0
+    ) {
+      setHasLocations(true);
+    } else {
+      setHasLocations(false);
+    }
+  }, []);
 
   return (
     <div>
@@ -39,13 +50,13 @@ export default function LocationIndexPage() {
           {currentProjectData.locations
             .filter((location) => location.Project_ID == projectId)
             .map((location) => (
-              <LocationCard location={location} />
+              <LocationCard location={location} key={location.Location_ID} />
             ))}
           <button onClick={handleBackBtn}>Back Button</button>
         </div>
       ) : (
         <div>
-          <p>Project ID is {id}</p>
+          <p>Project ID is {projectId}</p>
           <p>No locations detected</p>
           //AddNewLocation component
           <button onClick={handleBackBtn}>Back Button</button>

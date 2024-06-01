@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useScript } from '../../contexts';
-import { ClickEditComponent } from '../../components';
+import { ClickEditComponent, DeleteModal } from '../../components';
 
 export default function LocationShowPage() {
   const navigate = useNavigate();
@@ -33,6 +33,16 @@ export default function LocationShowPage() {
     getLocationsData();
     console.log(locationData);
   }, []);
+
+  const [showModal, setShowModal] = useState(false);
+
+  function handleToggleModalPopup() {
+    setShowModal(!showModal);
+  }
+
+  function onClose() {
+    setShowModal(false);
+  }
 
   return (
     <div>
@@ -114,6 +124,14 @@ export default function LocationShowPage() {
           <p>No Related Locations</p>
         )}
       </div>
+      <button onClick={handleToggleModalPopup}>Delete</button>
+      {showModal ? (
+        <DeleteModal
+          onClose={onClose}
+          majorField={'locations'}
+          fieldData={locationData}
+        />
+      ) : null}
       <button onClick={handleBackBtn}>Back Button</button>
     </div>
   );

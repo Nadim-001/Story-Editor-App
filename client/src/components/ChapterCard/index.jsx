@@ -5,43 +5,61 @@ import { useScript } from '../../contexts';
 import projectData from '../../data';
 import { useParams } from 'react-router-dom';
 import ClickEditComponent from '../ClickEditComponent';
+import DeleteModal from '../DeleteModal';
 
-export default function ChapterCard({ chapterID, chapterName, index }) {
+export default function ChapterCard({ chapterData, index }) {
   const { currentChapter, setCurrentChapter } = useScript();
 
-  const [isChanged, setIsChanged] = useState(true);
-
   function handleOnClick() {
-    setCurrentChapter(chapterID);
+    setCurrentChapter(chapterData.Chapter_ID);
     // console.log(currentChapter);
   }
 
-  function handleOnDelete() {
-    console.log(`deleting chapter ${index + 1}: ${chapterName}`);
+  // function handleOnDelete() {
+  //   console.log(`deleting chapter ${index + 1}: ${chapterData.Chapter_Name}`);
+  // }
+
+  const [showModal, setShowModal] = useState(false);
+
+  function handleToggleModalPopup() {
+    setShowModal(!showModal);
+  }
+
+  function onClose() {
+    setShowModal(false);
   }
 
   //index is the chapter number
   return (
     <div
-      id={chapterID}
+      id={chapterData.Chapter_ID}
       className={`individual-chapters-container ${
-        currentChapter == chapterID ? 'current-chapter' : null
+        currentChapter == chapterData.Chapter_ID ? 'current-chapter' : null
       }`}
       onClick={handleOnClick}
-      key={chapterID}
+      key={chapterData.Chapter_ID}
     >
       <ClickEditComponent
-        originalInputValue={chapterName}
+        originalInputValue={chapterData.Chapter_Name}
         inputType={'text'}
         majorField={'chapters'}
         minorField={'Chapter_Name'}
         otherIdField={'Chapter_ID'}
-        otherIdValue={chapterID}
+        otherIdValue={chapterData.Chapter_ID}
         index={index}
         placeholder={'Enter Chapter Name'}
       />
 
-      <HiTrash className="delete-btn" onClick={handleOnDelete} />
+      <HiTrash className="delete-btn" onClick={handleToggleModalPopup} />
+      {showModal ? (
+        <DeleteModal
+          onClose={onClose}
+          majorField={'chapters'}
+          fieldData={chapterData}
+          navigateOnceDeleted={false}
+          setShowModal={setShowModal}
+        />
+      ) : null}
     </div>
   );
 }

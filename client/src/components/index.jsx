@@ -15,6 +15,7 @@ export { default as NewChapterButton } from './NewChapterButton';
 export { default as NewCharacterModal } from './NewCharacterModal';
 export { default as NewIdeaModal } from './NewIdeaModal';
 export { default as NewLocationModal } from './NewLocationModal';
+export { default as DeleteModal } from './DeleteModal';
 
 export { default as AddScriptComponent } from './AddScriptComponent';
 export { default as AddScriptModal } from './AddScriptModal';

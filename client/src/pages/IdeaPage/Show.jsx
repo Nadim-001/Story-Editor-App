@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useScript } from '../../contexts';
-import { ClickEditComponent } from '../../components';
+import { ClickEditComponent, DeleteModal } from '../../components';
 
 export default function IdeaShowPage() {
   const navigate = useNavigate();
@@ -33,6 +33,16 @@ export default function IdeaShowPage() {
     getIdeasData();
     console.log(ideaData);
   }, []);
+
+  const [showModal, setShowModal] = useState(false);
+
+  function handleToggleModalPopup() {
+    setShowModal(!showModal);
+  }
+
+  function onClose() {
+    setShowModal(false);
+  }
 
   return (
     <div>
@@ -102,6 +112,14 @@ export default function IdeaShowPage() {
           <p>No Related Ideas</p>
         )}
       </div>
+      <button onClick={handleToggleModalPopup}>Delete</button>
+      {showModal ? (
+        <DeleteModal
+          onClose={onClose}
+          majorField={'ideas'}
+          fieldData={ideaData}
+        />
+      ) : null}
       <button onClick={handleBackBtn}>Back Button</button>
     </div>
   );

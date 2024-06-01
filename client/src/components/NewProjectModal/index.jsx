@@ -40,7 +40,7 @@ export default function NewProjectModal({ id = null, onClose }) {
         </div>
         <div className="body">
           <form autoComplete="off">
-            <label for="project_name">Project Name</label>
+            <label htmlFor="project_name">Project Name</label>
             <input
               type="text"
               id="project_name"
