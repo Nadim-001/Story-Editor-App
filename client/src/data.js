@@ -2872,7 +2872,7 @@ export const projectData = {
         'A detective uncovers a series of strange events happening in the town of Silverwood.',
       Status: 'Not Used',
       Characters: [1, 2],
-      Location: 1,
+      Location: [1],
       Project_ID: 1,
     },
     {
@@ -2882,7 +2882,7 @@ export const projectData = {
         "A hidden treasure map is discovered, leading to an adventurous quest in Drake's Bay.",
       Status: 'Used',
       Characters: [3, 4],
-      Location: 2,
+      Location: [2],
       Project_ID: 2,
     },
     {
@@ -2892,7 +2892,7 @@ export const projectData = {
         "A group of friends encounters mysterious echoes while hiking in Eagle's Peak.",
       Status: 'Not Used',
       Characters: [5, 6],
-      Location: 3,
+      Location: [3],
       Project_ID: 5,
     },
     {
@@ -2902,7 +2902,7 @@ export const projectData = {
         'Life in the tranquil Verdant Plains takes a turn with the arrival of an enigmatic stranger.',
       Status: 'Used',
       Characters: [7, 8],
-      Location: 4,
+      Location: [4],
       Project_ID: 6,
     },
     {
@@ -2912,7 +2912,7 @@ export const projectData = {
         'A journalist investigates a series of crimes in the bustling Crimson City.',
       Status: 'Not Used',
       Characters: [9, 10],
-      Location: 5,
+      Location: [5],
       Project_ID: 899,
     },
     {
@@ -2922,7 +2922,7 @@ export const projectData = {
         'A scientist discovers strange phenomena occurring in the peaceful Azure Lake.',
       Status: 'Used',
       Characters: [11, 12],
-      Location: 6,
+      Location: [6],
       Project_ID: 901,
     },
     {
@@ -2932,7 +2932,7 @@ export const projectData = {
         'Explorers search for ancient artifacts buried in the desert town of Golden Sands.',
       Status: 'Not Used',
       Characters: [13, 14],
-      Location: 7,
+      Location: [7],
       Project_ID: 1,
     },
     {
@@ -2942,7 +2942,7 @@ export const projectData = {
         'A writer moves to Maple Ridge and begins hearing whispers that lead to a hidden secret.',
       Status: 'Used',
       Characters: [15, 16],
-      Location: 8,
+      Location: [8],
       Project_ID: 2,
     },
     {
@@ -2952,7 +2952,7 @@ export const projectData = {
         'Residents of Frostholm share chilling tales of the supernatural during a winter storm.',
       Status: 'Not Used',
       Characters: [17, 18],
-      Location: 9,
+      Location: [9],
       Project_ID: 5,
     },
     {
@@ -2962,7 +2962,7 @@ export const projectData = {
         'A group of tourists uncovers a hidden conspiracy in the luxurious Ivory Coast.',
       Status: 'Used',
       Characters: [19, 20],
-      Location: 10,
+      Location: [10],
       Project_ID: 6,
     },
     {
@@ -2971,8 +2971,8 @@ export const projectData = {
       Content:
         'An ancient artifact is discovered in Shadowmere, leading to a series of mysterious events.',
       Status: 'Not Used',
-      Characters: null,
-      Location: 11,
+      Characters: [],
+      Location: [11],
       Project_ID: 899,
     },
     {
@@ -2982,7 +2982,7 @@ export const projectData = {
         'A romance blossoms in the picturesque Sunset Valley amidst the backdrop of stunning sunsets.',
       Status: 'Used',
       Characters: [21, 22],
-      Location: null,
+      Location: [],
       Project_ID: 901,
     },
     {
@@ -2991,8 +2991,8 @@ export const projectData = {
       Content:
         'Young explorers embark on an adventure to uncover the secrets of Crystal Cove.',
       Status: 'Not Used',
-      Characters: null,
-      Location: 13,
+      Characters: [],
+      Location: [13],
       Project_ID: 1,
     },
     {
@@ -3001,8 +3001,8 @@ export const projectData = {
       Content:
         'Residents of Mossy Hollow share stories of the ancient forest and its magical properties.',
       Status: 'Used',
-      Characters: null,
-      Location: 14,
+      Characters: [],
+      Location: [14],
       Project_ID: 2,
     },
     {
@@ -3012,7 +3012,7 @@ export const projectData = {
         'The history of Copperfield is revealed through a series of interconnected stories.',
       Status: 'Not Used',
       Characters: [23, 24],
-      Location: 15,
+      Location: [15],
       Project_ID: 5,
     },
     {
@@ -3022,7 +3022,7 @@ export const projectData = {
         'A detective unravels a web of intrigue and deception in the bustling port city of New Harbor.',
       Status: 'Used',
       Characters: [25, 26],
-      Location: 16,
+      Location: [16],
       Project_ID: 6,
     },
     {
@@ -3031,8 +3031,8 @@ export const projectData = {
       Content:
         'Glimmerbrook is filled with magical tales and enchanting adventures.',
       Status: 'Not Used',
-      Characters: null,
-      Location: 17,
+      Characters: [],
+      Location: [17],
       Project_ID: 899,
     },
     {
@@ -3041,8 +3041,8 @@ export const projectData = {
       Content:
         'In the futuristic Starlight City, technology and humanity collide in unexpected ways.',
       Status: 'Used',
-      Characters: null,
-      Location: 18,
+      Characters: [],
+      Location: [18],
       Project_ID: 901,
     },
     {
@@ -3052,7 +3052,7 @@ export const projectData = {
         'Strange occurrences in the charming town of Meadowfield lead to a deeper investigation.',
       Status: 'Not Used',
       Characters: [27, 28],
-      Location: 19,
+      Location: [19],
       Project_ID: 1,
     },
     {
@@ -3061,8 +3061,8 @@ export const projectData = {
       Content:
         'The industrial history of Ironforge is brought to life through the stories of its people.',
       Status: 'Used',
-      Characters: null,
-      Location: 20,
+      Characters: [],
+      Location: [20],
       Project_ID: 2,
     },
     {
@@ -3072,7 +3072,7 @@ export const projectData = {
         'A secluded village hides dark secrets that are slowly uncovered by a newcomer.',
       Status: 'Not Used',
       Characters: [29, 30],
-      Location: 21,
+      Location: [21],
       Project_ID: 5,
     },
     {
@@ -3081,8 +3081,8 @@ export const projectData = {
       Content:
         'Outdoor enthusiasts explore the rugged terrain and hidden secrets of Granite Falls.',
       Status: 'Used',
-      Characters: null,
-      Location: 22,
+      Characters: [],
+      Location: [22],
       Project_ID: 6,
     },
     {
@@ -3091,8 +3091,8 @@ export const projectData = {
       Content:
         'The dark and mysterious town of Ravenwood is filled with legends and lore.',
       Status: 'Not Used',
-      Characters: null,
-      Location: 23,
+      Characters: [],
+      Location: [23],
       Project_ID: 899,
     },
     {
@@ -3102,7 +3102,7 @@ export const projectData = {
         'A series of short stories set in the cozy town of Pinehurst, known for its local traditions.',
       Status: 'Used',
       Characters: [31, 32],
-      Location: 24,
+      Location: [24],
       Project_ID: 901,
     },
     {
@@ -3111,8 +3111,8 @@ export const projectData = {
       Content:
         'Mysterious events at a lakeside village lead to a thrilling investigation.',
       Status: 'Not Used',
-      Characters: null,
-      Location: 25,
+      Characters: [],
+      Location: [25],
       Project_ID: 1,
     },
     {
@@ -3122,7 +3122,7 @@ export const projectData = {
         'The medieval architecture and rich history of Stonebridge come alive through its tales.',
       Status: 'Used',
       Characters: [33, 34],
-      Location: 26,
+      Location: [26],
       Project_ID: 2,
     },
     {
@@ -3131,8 +3131,8 @@ export const projectData = {
       Content:
         'The blooming flowers and stunning views of Blossom Hill hide dark secrets.',
       Status: 'Not Used',
-      Characters: null,
-      Location: 27,
+      Characters: [],
+      Location: [27],
       Project_ID: 5,
     },
     {
@@ -3142,7 +3142,7 @@ export const projectData = {
         'A valley known for its beautiful sunrises holds stories of hope and resilience.',
       Status: 'Used',
       Characters: [35, 36],
-      Location: 28,
+      Location: [28],
       Project_ID: 6,
     },
     {
@@ -3151,8 +3151,8 @@ export const projectData = {
       Content:
         'The unique flora of Thornfield leads to unexpected discoveries.',
       Status: 'Not Used',
-      Characters: null,
-      Location: 29,
+      Characters: [],
+      Location: [29],
       Project_ID: 899,
     },
     {
@@ -3161,8 +3161,8 @@ export const projectData = {
       Content:
         'The strong winds and windsurfing spots of Breezeway are the backdrop for exciting tales.',
       Status: 'Used',
-      Characters: null,
-      Location: 30,
+      Characters: [],
+      Location: [30],
       Project_ID: 901,
     },
   ],

@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useScript } from '../../contexts';
-import { ClickEditComponent, DeleteModal } from '../../components';
+import {
+  ClickEditComponent,
+  DeleteModal,
+  RelatedIdeaModal,
+} from '../../components';
 
 export default function IdeaShowPage() {
   const navigate = useNavigate();
@@ -35,6 +39,8 @@ export default function IdeaShowPage() {
   }, []);
 
   const [showModal, setShowModal] = useState(false);
+  const [showCharacterModal, setShowCharacterModal] = useState(false);
+  const [showLocationModal, setShowLocationModal] = useState(false);
 
   function handleToggleModalPopup() {
     setShowModal(!showModal);
@@ -42,6 +48,22 @@ export default function IdeaShowPage() {
 
   function onClose() {
     setShowModal(false);
+  }
+
+  function handleRelatedCharactersToggleModalPopup() {
+    setShowCharacterModal(!showCharacterModal);
+  }
+
+  function onRelatedCharactersClose() {
+    setShowCharacterModal(false);
+  }
+
+  function handleRelatedLocationsToggleModalPopup() {
+    setShowLocationModal(!showCharacterModal);
+  }
+
+  function onRelatedLocationsClose() {
+    setShowLocationModal(false);
   }
 
   return (
@@ -111,6 +133,47 @@ export default function IdeaShowPage() {
         ) : (
           <p>No Related Ideas</p>
         )}
+        <button onClick={handleRelatedCharactersToggleModalPopup}>
+          Add New Character
+        </button>
+        {showCharacterModal ? (
+          <RelatedIdeaModal
+            onClose={onRelatedCharactersClose}
+            // majorField={'ideas'}
+            ideaData={ideaData}
+            majorField={'characters'}
+            minorField={'Characters'}
+            idField={'Character_ID'}
+          />
+        ) : null}
+      </div>
+      <div>
+        <h2>
+          Location: {ideaData.Location} {ideaIndex}
+        </h2>
+        {ideaData.Location && ideaData.Location.length ? (
+          //NOTE: related_character is already the ID lol
+          ideaData.Location.map((related_location) =>
+            currentProjectData.locations
+              .filter((location) => location.Location_ID == related_location)
+              .map((location) => <p>{location.Name}</p>)
+          )
+        ) : (
+          <p>No Related Ideas</p>
+        )}
+        <button onClick={handleRelatedLocationsToggleModalPopup}>
+          Add New Location
+        </button>
+        {showLocationModal ? (
+          <RelatedIdeaModal
+            onClose={onRelatedLocationsClose}
+            // majorField={'ideas'}
+            ideaData={ideaData}
+            majorField={'locations'}
+            minorField={'Location'}
+            idField={'Location_ID'}
+          />
+        ) : null}
       </div>
       <button onClick={handleToggleModalPopup}>Delete</button>
       {showModal ? (

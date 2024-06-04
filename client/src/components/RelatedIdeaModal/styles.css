@@ -1,0 +1,25 @@
+.selected-container {
+  border: 5px solid blue;
+  height: 25%;
+  width: 100%;
+  /* margin-left: 1vw; */
+  /* margin-top: 2vh; */
+  border-radius: 15px;
+
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.not-selected-container {
+  border: 5px solid red;
+  height: 25%;
+  width: 100%;
+  /* margin-left: 1vw; */
+  /* margin-top: 2vh; */
+  border-radius: 15px;
+
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}

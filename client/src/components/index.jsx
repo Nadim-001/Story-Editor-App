@@ -16,6 +16,8 @@ export { default as NewCharacterModal } from './NewCharacterModal';
 export { default as NewIdeaModal } from './NewIdeaModal';
 export { default as NewLocationModal } from './NewLocationModal';
 export { default as DeleteModal } from './DeleteModal';
+export { default as RelatedIdeaModal } from './RelatedIdeaModal';
+export { default as ToggleSelected } from './ToggleSelectedComponent';
 
 export { default as AddScriptComponent } from './AddScriptComponent';
 export { default as AddScriptModal } from './AddScriptModal';
